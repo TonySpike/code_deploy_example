@@ -1,22 +1,12 @@
 version: 0.0
 os: linux
 files:
-   - source: /
-     destination: /var/www/html
-permissions:
-   - object: /var/www/html
-     pattern: "**"
-     owner: apache
-     group: apache
-     mode: 755
-     type:
-       - file
+   - source: /robot-batch.jar
+     destination: /var/robot
 hooks:
    BeforeInstall:
-    - location: scripts/installapache.sh
-      runas: root
-    - location: scripts/startapache.sh
+    - location: scripts/statusservice.sh
       runas: root
    AfterInstall:
-    - location: scripts/restartapache.sh
+    - location: scripts/restartservice.sh
       runas: root
